@@ -17,9 +17,12 @@ This app keeps a compact digital clock visible in a screen corner.
 
 ## Download
 Use prebuilt binaries from the GitHub Releases page:
-- `WindowsClockOverlay.exe`
+- https://github.com/jrvelloso/windows-clock-overlay/releases/latest
 
 If no release is available yet, build from source.
+
+Direct download:
+- https://github.com/jrvelloso/windows-clock-overlay/releases/latest/download/WindowsClockOverlay-win-x64.zip
 
 ## Run from source
 ```powershell

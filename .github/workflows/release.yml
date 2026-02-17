@@ -25,7 +25,7 @@ jobs:
         run: dotnet build .\windows-clock.sln -c Release --no-restore
 
       - name: Publish
-        run: dotnet publish .\WindowsClockOverlay\WindowsClockOverlay.csproj -c Release -r win-x64 --self-contained false -o .\artifacts\publish
+        run: dotnet publish .\WindowsClockOverlay\WindowsClockOverlay.csproj -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o .\artifacts\publish
 
       - name: Archive
         run: Compress-Archive -Path .\artifacts\publish\* -DestinationPath .\artifacts\WindowsClockOverlay-win-x64.zip -Force
