@@ -5,6 +5,9 @@ on:
     tags:
       - "v*"
 
+permissions:
+  contents: write
+
 jobs:
   build-and-release:
     runs-on: windows-latest
@@ -33,4 +36,4 @@ jobs:
       - name: Create release
         uses: softprops/action-gh-release@v2
         with:
-          files: .\artifacts\WindowsClockOverlay-win-x64.zip
+          files: ./artifacts/WindowsClockOverlay-win-x64.zip
