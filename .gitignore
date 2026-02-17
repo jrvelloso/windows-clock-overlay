@@ -1,0 +1,23 @@
+# Build output
+**/bin/
+**/obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# IDE
+.vs/
+.vscode/
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Packaging / release artifacts
+*.zip
+*.msix
+*.msi
+publish/

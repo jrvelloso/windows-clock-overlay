@@ -1,0 +1,36 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build-and-release:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Restore
+        run: dotnet restore .\windows-clock.sln
+
+      - name: Build
+        run: dotnet build .\windows-clock.sln -c Release --no-restore
+
+      - name: Publish
+        run: dotnet publish .\WindowsClockOverlay\WindowsClockOverlay.csproj -c Release -r win-x64 --self-contained false -o .\artifacts\publish
+
+      - name: Archive
+        run: Compress-Archive -Path .\artifacts\publish\* -DestinationPath .\artifacts\WindowsClockOverlay-win-x64.zip -Force
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: .\artifacts\WindowsClockOverlay-win-x64.zip
