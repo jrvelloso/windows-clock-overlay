@@ -40,6 +40,15 @@ Output:
 - Drag the clock with left-click + hold to reposition.
 - Right-click the tray icon to change color, reset position, or exit.
 
+## Screenshots
+Clock visible in Windows Explorer:
+
+![Windows Explorer with clock](assets/screenshots/explorer-clock.png)
+
+Clock highlighted for visibility:
+
+![Windows Explorer with highlighted clock](assets/screenshots/explorer-clock-highlighted.png)
+
 ## Fullscreen behavior
 Works over normal windows and borderless fullscreen windows.
 Some exclusive fullscreen rendering modes can still draw above overlays.
@@ -49,6 +58,10 @@ Issues and PRs are welcome. See:
 - `CONTRIBUTING.md`
 - `.github/ISSUE_TEMPLATE/bug_report.yml`
 - `.github/ISSUE_TEMPLATE/feature_request.yml`
+
+## Support
+If this project helps you, you can support development on Ko-fi:
+- [ko-fi.com/jrvelloso](https://ko-fi.com/jrvelloso)
 
 ## Roadmap
 - Optional 12h format

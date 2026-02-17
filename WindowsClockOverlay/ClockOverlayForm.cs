@@ -24,6 +24,11 @@ public sealed class ClockOverlayForm : Form
     private const int WsExLayered = 0x00080000;
     private const int WsExTransparent = 0x00000020;
     private const int WsExToolWindow = 0x00000080;
+    private static readonly IntPtr HwndTopmost = new(-1);
+    private const uint SwpNomove = 0x0002;
+    private const uint SwpNosize = 0x0001;
+    private const uint SwpNoactivate = 0x0010;
+    private const uint SwpNoownerzorder = 0x0200;
     private const int RightMargin = 150;
     private const int TopMargin = 0;
     private const string EmbeddedIconResourceName = "WindowsClockOverlay.clock.ico";
@@ -95,6 +100,7 @@ public sealed class ClockOverlayForm : Form
     {
         base.OnHandleCreated(e);
         SetClickThrough(false);
+        EnsureAlwaysOnTop();
     }
 
     protected override void OnFormClosing(FormClosingEventArgs e)
@@ -200,6 +206,8 @@ public sealed class ClockOverlayForm : Form
         {
             ApplyDefaultPosition();
         }
+
+        EnsureAlwaysOnTop();
     }
 
     private void WireMoveHandlers(Control control)
@@ -326,6 +334,24 @@ public sealed class ClockOverlayForm : Form
         }
 
         NativeMethods.SetWindowLongPtr(Handle, GwlExStyle, new IntPtr(style));
+    }
+
+    private void EnsureAlwaysOnTop()
+    {
+        if (!IsHandleCreated)
+        {
+            return;
+        }
+
+        TopMost = true;
+        NativeMethods.SetWindowPos(
+            Handle,
+            HwndTopmost,
+            0,
+            0,
+            0,
+            0,
+            SwpNomove | SwpNosize | SwpNoactivate | SwpNoownerzorder);
     }
 
     private static Icon LoadTrayIcon()
