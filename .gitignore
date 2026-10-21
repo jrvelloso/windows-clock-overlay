@@ -21,3 +21,5 @@ Desktop.ini
 *.msix
 *.msi
 publish/
+
+log.log
